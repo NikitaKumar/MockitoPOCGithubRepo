@@ -3,7 +3,16 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        bat 'mvn clean compile'
+        parallel(
+          "Compile": {
+            bat 'mvn clean compile'
+            
+          },
+          "Package": {
+            bat 'mvn package'
+            
+          }
+        )
       }
     }
   }
