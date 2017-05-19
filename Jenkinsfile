@@ -15,5 +15,10 @@ pipeline {
         )
       }
     }
+    stage('SCA') {
+      steps {
+        bat 'sonar-scanner'
+      }
+    }
   }
 }
